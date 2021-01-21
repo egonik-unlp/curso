@@ -1,0 +1,26 @@
+<h1>Acceso a los cursos</h1>
+<table>
+    <tr>
+        <thead>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </thead>
+    </tr>
+      <% @courses.each do |course| %>
+    <tr>
+        <td><%= course.name %></td>
+        <td><%= course.desc %></td>
+        <td>
+            <%= link_to "Mostrar", course %>
+            <%= link_to "Editar", edit_course_path(course) %>
+            <%= link_to "Eliminar" , course_path(course),
+                                   method: :delete,
+                                   data: {confirm: 'Seguro?'}%>
+        </td>
+    </tr>
+      <% end %>
+</table>
+
+<%= link_to "Nuevo Curso", new_course_path %>
+
+<%= link_to "Home",  root_path %>
